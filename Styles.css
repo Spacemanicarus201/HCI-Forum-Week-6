@@ -15,18 +15,18 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.8); /* Change this color as needed */
+    background-color: rgba(255, 255, 255, 0.8); 
 }
 #living-room {
-    background-color: rgba(255, 255, 255, 0.7); /* Change this color as needed */
+    background-color: rgba(255, 255, 255, 0.7); 
 }
 
 #bedroom {
-    background-color: rgba(255, 255, 255, 0.6); /* Change this color as needed */
+    background-color: rgba(255, 255, 255, 0.6); 
 }
 
 #bathroom {
-    background-color: rgba(255, 255, 255, 0.5); /* Change this color as needed */
+    background-color: rgba(255, 255, 255, 0.5); 
 }
 .device {
     margin-bottom: 10px;
