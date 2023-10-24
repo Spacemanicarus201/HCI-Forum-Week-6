@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="Styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .color-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            width: 100px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            transition: background 0.3s;
+            position: relative;
+        }
+
+        .color-caption {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-align: center;
+        }
+
+        .color-preview:hover {
+            background: linear-gradient(135deg, #000000, #555555);
+        }
+
+        .color-preview:hover .color-caption {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <h1>My Home</h1>
+        </div>
+        <div class="navbar-links">
+            <ul>
+                <li class="room-dropdown">
+                    <a href="javascript:void(0);" id="connected-dropdown">Connected <i class="fas fa-chevron-down"></i></a>
+                    <ul class="room-dropdown-content" id="connected-dropdown-content">
+                        <li><a href="LivingRoom.html">Living Room</a></li>
+                        <li><a href="Bedroom.html">Bedroom</a></li>
+                        <li><a href="Bathroom.html">Bathroom</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-toggle">
+            <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </a>
+        </div>
+    </nav>
+    <div class="room" id="bathroom">
+        <h2>Bathroom</h2>
+        <div class="device" id="bathroom-devices">
+            <i class="fas fa-water"></i>
+            <i class="fas fa-lightbulb"></i>
+            <i class="fas fa-tv"></i>
+            <i class="fas fa-fan"></i>
+        </div>
+        <div class="toggle-container">
+            <span class="toggle-label">Bathroom</span>
+            <label class="switch">
+                <input type="checkbox" id="bathroom-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="settings" id="heater-settings">
+            <h2>Water Heater</h2>
+            <div class="temperature-gauge">
+                <input type="range" id="temperature-slider" min="0" max="100" step="1">
+                <p id="temperature-label">Temperature: <span id="temperature-value">0</span>°C</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const connectedDropdown = document.getElementById("connected-dropdown");
+        const connectedDropdownContent = document.getElementById("connected-dropdown-content");
+
+        connectedDropdown.addEventListener("click", function() {
+            if (connectedDropdownContent.style.display === "block") {
+                connectedDropdownContent.style.display = "none";
+            } else {
+                connectedDropdownContent.style.display = "block";
+            }
+        });
+
+        const slider = document.getElementById("bathroom-toggle");
+        const notification = document.getElementById("notification");
+
+        slider.addEventListener("change", function() {
+            if (slider.checked) {
+                notification.textContent = "Devices are on.";
+            } else {
+                notification.textContent = "Devices are off.";
+            }
+        });
+
+        const temperatureSlider = document.getElementById("temperature-slider");
+        const temperatureLabel = document.getElementById("temperature-label");
+        const temperatureValue = document.getElementById("temperature-value");
+
+        temperatureSlider.addEventListener("input", function() {
+            const tempValue = temperatureSlider.value;
+            temperatureValue.textContent = tempValue;
+        });
+
+        temperatureSlider.addEventListener("change", function() {
+            
+            const tempValue = temperatureSlider.value;
+            temperatureValue.textContent = tempValue + "°C";
+        });
+    </script>
+</body>
+</html>
